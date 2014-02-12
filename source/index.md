@@ -282,25 +282,25 @@ FraudRankr collects page events via JavaScript.
 
 ```html
 <script type="text/javascript">
-    window.FraudRankr = {
-        publishable_key: '<apikey>'
-    };
-    (function() {
-        function kickFraudRankr() {
-            var d = document, f = d.createElement('script');
-            f.type = 'text/javascript';
-            f.async = true;
-            f.src = (d.location.protocol == 'https:' ? 'https' : 'http') \
-                    + '://c.fraudrankr.com/resources/t.js';
-            var s = d.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(f, s);
-        }
-        if (a = window.attachEvent) {
-            a('onload', kickFraudRankr);
-        } else {
-            window.addEventListener('load', kickFraudRankr, false);
-        }
-    })();
+window.FraudRankr = {
+  publishable_key: '<apikey>'
+};
+(function() {
+  function kickFraudRankr() {
+    var d = document, f = d.createElement('script');
+    f.type = 'text/javascript';
+    f.async = true;
+    f.src = (d.location.protocol == 'https:' ? 'https' : 'http') \
+            + '://c.fraudrankr.com/resources/t.js';
+    var s = d.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(f, s);
+    }
+    if (a = window.attachEvent) {
+      a('onload', kickFraudRankr);
+    } else {
+      window.addEventListener('load', kickFraudRankr, false);
+    }
+})();
 </script>
 ```
 
