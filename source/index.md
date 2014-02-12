@@ -13,7 +13,7 @@ toc_footers:
 
 The Fraudrankr REST API supports 3 different resources (events).
 
-A message sent to our API corresponds to an user event (transaction, label
+A message sent to our API corresponds to a user event (transaction, label
 and custom event) on your service.
 
 Base URL: `https://c.fraudrankr.com/`
@@ -28,11 +28,8 @@ https://c.fraudrankr.com/custom-events
 All responses will be delivered in JSON format. HTTP response codes are used to
 indicate API errors.
 
-You can view code examples in the dark area to the right, and you can switch the
-programming language of the examples with the tabs in the top right.
 
-
-# Using cURL
+# Testing the API
 
 ```shell
 curl -X POST https://c.fraudrankr.com/labels -d '{"apikey": "<apikey>", "user_id":
@@ -52,28 +49,17 @@ curl -X POST https://c.fraudrankr.com/labels -d '{"apikey": "<apikey>", "user_id
 }
 ```
 
-cURL is a command-line application for performing requests using a variety of
-protocols including HTTP. cURL is often used by developers to test FraudRankr
-API services, as it supports the HTTP functionality required to interact with
-the APIs at a low level.
-
-cURL is commonly available on a default install of many UNIX/Linux platforms.
-Try typing curl in your favorite shell to see if the tool is installed and is
-in your PATH. If you don't have the tool installed, visit the [download
-page](http://curl.haxx.se/download.html) on the [cURL
-website](http://curl.haxx.se/) to obtain the official source or a
-user-contributed binary package. Note that the command-line tool uses the
-libcurl library, which may be offered as a separate download package, so, if
-you're not compiling from the source, be sure to download a 'binary' package
-instead of a 'libcurl' package. The SSL-enabled packages are required to access
-the FraudRankr API.
+Use your HTTP client of choice whether it is `wget`, `curl`,
+[Postman](http://www.getpostman.com), or
+[RESTClient](https://addons.mozilla.org/en-US/firefox/addon/restclient).
+We will use `curl` for the examples so you can easily copy and paste to test.
 
 
 # Authentication
 FraudRankr uses API keys to allow access to the API. You can register for a
 FraudRankr API key at [fraudrankr.com](http://www.fraudrankr.com/)
 
-FraudRankr expects for the API key to be included in all JSON API requests to the server that looks like the following:
+FraudRankr expects the API key to be included in all JSON API requests to the server that looks like the following:
 
 ```json
 {
