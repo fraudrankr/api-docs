@@ -53,7 +53,7 @@
 
   <body class="index">
     <div class="tocify-wrapper">
-      <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+Cjxzdmcgd2lkdGg9IjE1MyIgaGVpZ2h0PSIzNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KIDwhLS0gQ3JlYXRlZCB3aXRoIE1ldGhvZCBEcmF3IC0gaHR0cDovL2dpdGh1Yi5jb20vZHVvcGl4ZWwvTWV0aG9kLURyYXcvIC0tPgoKIDxnPgogIDx0aXRsZT5iYWNrZ3JvdW5kPC90aXRsZT4KICA8cmVjdCB4PSItMSIgeT0iLTEiIHdpZHRoPSIxNTUiIGhlaWdodD0iMzgiIGlkPSJjYW52YXNfYmFja2dyb3VuZCIgZmlsbD0ibm9uZSIvPgogIDxnIGlkPSJjYW52YXNHcmlkIiBkaXNwbGF5PSJub25lIj4KICAgPHJlY3QgaWQ9InN2Z18yIiB3aWR0aD0iNTgwIiBoZWlnaHQ9IjQwMCIgeD0iMSIgeT0iMSIgc3Ryb2tlLXdpZHRoPSIwIiBmaWxsPSJ1cmwoI2dyaWRwYXR0ZXJuKSIvPgogIDwvZz4KIDwvZz4KIDxnPgogIDx0aXRsZT5MYXllciAxPC90aXRsZT4KICA8dGV4dCBzdHlsZT0iY3Vyc29yOiBtb3ZlOyIgZm9udC1zdHlsZT0ibm9ybWFsIiBmaWxsPSIjMDA4Y2JhIiBzdHJva2Utd2lkdGg9IjAiIHg9IjE5LjUiIHk9IjI4IiBpZD0ic3ZnXzEiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtZmFtaWx5PSJIZWx2ZXRpY2EsIEFyaWFsLCBzYW5zLXNlcmlmIiB0ZXh0LWFuY2hvcj0ibGVmdCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgc3Ryb2tlPSIjMDAwIiBmb250LXdlaWdodD0ibm9ybWFsIj5GciYjMjI2O3VkciYjMjI2O25rcjwvdGV4dD4KIDwvZz4KPC9zdmc+" />
+      <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+Cjxzdmcgd2lkdGg9IjE1MyIgaGVpZ2h0PSI1NyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KIDwhLS0gQ3JlYXRlZCB3aXRoIE1ldGhvZCBEcmF3IC0gaHR0cDovL2dpdGh1Yi5jb20vZHVvcGl4ZWwvTWV0aG9kLURyYXcvIC0tPgoKIDxnPgogIDx0aXRsZT5iYWNrZ3JvdW5kPC90aXRsZT4KICA8cmVjdCB4PSItMSIgeT0iLTEiIHdpZHRoPSIxNTUiIGhlaWdodD0iNTkiIGlkPSJjYW52YXNfYmFja2dyb3VuZCIgZmlsbD0ibm9uZSIvPgogIDxnIGlkPSJjYW52YXNHcmlkIiBkaXNwbGF5PSJub25lIj4KICAgPHJlY3QgaWQ9InN2Z18yIiB3aWR0aD0iNTgwIiBoZWlnaHQ9IjQwMCIgeD0iMSIgeT0iMSIgc3Ryb2tlLXdpZHRoPSIwIiBmaWxsPSJ1cmwoI2dyaWRwYXR0ZXJuKSIvPgogIDwvZz4KIDwvZz4KIDxnPgogIDx0aXRsZT5MYXllciAxPC90aXRsZT4KICA8dGV4dCBmb250LXN0eWxlPSJub3JtYWwiIGZpbGw9IiMwMDhjYmEiIHN0cm9rZS13aWR0aD0iMCIgeD0iMTguNSIgeT0iMzciIGlkPSJzdmdfMSIgZm9udC1zaXplPSIyNCIgZm9udC1mYW1pbHk9IkhlbHZldGljYSwgQXJpYWwsIHNhbnMtc2VyaWYiIHRleHQtYW5jaG9yPSJsZWZ0IiB4bWw6c3BhY2U9InByZXNlcnZlIiBzdHJva2U9IiMwMDAiIGZvbnQtd2VpZ2h0PSJub3JtYWwiPkZyYXVkciYjMjI2O25rcjwvdGV4dD4KIDwvZz4KPC9zdmc+" />
       <div id="toc">
       </div>
       
@@ -90,8 +90,8 @@ indicate API errors.</p>
 <p>You can view code examples in the dark area to the right, and you can switch the
 programming language of the examples with the tabs in the top right.</p>
 
-<h1 id="sample-curl-command">Sample Curl Command</h1>
-<pre class="highlight shell">curl -X POST https://c.fraudrankr.com/labels -d <span class="s1">'{"apikey": "xxxxxx", "user_id":
+<h1 id="using-curl">Using cURL</h1>
+<pre class="highlight shell">curl -X POST https://c.fraudrankr.com/labels -d <span class="s1">'{"apikey": "&lt;apikey&gt;", "user_id":
 "1234", "transaction_id": "ab1cd2-1234-5678", "label": "chargeback", "reason":
 "30"}'</span>
 </pre>
@@ -99,13 +99,29 @@ programming language of the examples with the tabs in the top right.</p>
 <p>The above command will send this JSON document (in HTTP request body):</p>
 </blockquote>
 <pre class="highlight json"><span class="p">{</span><span class="w">
-    </span><span class="s2">"apikey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxx"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"apikey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;apikey&gt;"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"transaction_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ab1cd2-1234-5678"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chargeback"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></pre>
+<p>cURL is a command-line application for performing requests using a variety of
+protocols including HTTP. cURL is often used by developers to test FraudRankr
+API services, as it supports the HTTP functionality required to interact with
+the APIs at a low level.</p>
+
+<p>cURL is commonly available on a default install of many UNIX/Linux platforms.
+Try typing curl in your favorite shell to see if the tool is installed and is
+in your PATH. If you don&rsquo;t have the tool installed, visit the <a href="http://curl.haxx.se/download.html">download
+page</a> on the <a href="http://curl.haxx.se/">cURL
+website</a> to obtain the official source or a
+user-contributed binary package. Note that the command-line tool uses the
+libcurl library, which may be offered as a separate download package, so, if
+you&rsquo;re not compiling from the source, be sure to download a &lsquo;binary&rsquo; package
+instead of a &lsquo;libcurl&rsquo; package. The SSL-enabled packages are required to access
+the FraudRankr API.</p>
+
 <h1 id="authentication">Authentication</h1>
 
 <p>FraudRankr uses API keys to allow access to the API. You can register for a
@@ -113,7 +129,7 @@ FraudRankr API key at <a href="http://www.fraudrankr.com/">fraudrankr.com</a></p
 
 <p>FraudRankr expects for the API key to be included in all JSON API requests to the server that looks like the following:</p>
 <pre class="highlight json"><span class="p">{</span><span class="w">
-    </span><span class="s2">"apikey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;api_key&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"apikey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;apikey&gt;"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"transaction_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ab1cd2-1234-5678"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chargeback"</span><span class="p">,</span><span class="w">
@@ -121,7 +137,7 @@ FraudRankr API key at <a href="http://www.fraudrankr.com/">fraudrankr.com</a></p
 </span><span class="p">}</span><span class="w">
 </span></pre>
 <p><aside class="notice">
-You must replace <code class="prettyprint">&lt;api_key&gt;</code> with your own API key.
+You must replace <code class="prettyprint">&lt;apikey&gt;</code> with your own API key.
 </aside></p>
 
 <h1 id="common-fields">Common fields</h1>
@@ -173,7 +189,7 @@ users.
 <p>An example <code class="prettyprint">sale transaction</code> event</p>
 </blockquote>
 <pre class="highlight json"><span class="w">    </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"apikey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxx"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"apikey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;apikey&gt;"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"user_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"219.231.41.48"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"transaction_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ab1cd2-1234-5678"</span><span class="p">,</span><span class="w">
@@ -198,7 +214,7 @@ users.
 <p>An example <code class="prettyprint">refund transaction</code> event</p>
 </blockquote>
 <pre class="highlight json"><span class="w">    </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"apikey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxx"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"apikey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;apikey&gt;"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"transaction_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ab1cd2-1234-5678"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"refund"</span><span class="p">,</span><span class="w">
@@ -312,7 +328,7 @@ users.
 <p>An example using the <code class="prettyprint">chargeback</code> label</p>
 </blockquote>
 <pre class="highlight json"><span class="w">    </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"apikey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxx"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"apikey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;apikey&gt;"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"transaction_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ab1cd2-1234-5678"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chargeback"</span><span class="p">,</span><span class="w">
@@ -324,7 +340,7 @@ users.
 <p>An example using the <code class="prettyprint">retrieval-request</code> label</p>
 </blockquote>
 <pre class="highlight json"><span class="w">    </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"apikey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxx"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"apikey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;apikey&gt;"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"transaction_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ab1cd2-1234-5678"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"retrieval-request"</span><span class="p">,</span><span class="w">
@@ -378,7 +394,7 @@ Reason Codes</a>.
 <li><code class="prettyprint">ban</code> - A user abused your system or abused other users and should be marked
 as bad.</li>
 <li><code class="prettyprint">unban</code> - A user was mistakenly banned in your system. Avoid our system will
-treat good behavior as bad behavior.</li>
+treat good behaviour as bad behaviour.</li>
 <li><code class="prettyprint">chargeback</code> - A user made a transaction that caused a chargeback. Please
 also send <code class="prettyprint">transaction_id</code> that caused this chargeback.</li>
 <li><code class="prettyprint">retrieval-request</code> - A user caused a retrieval request.</li>
@@ -390,7 +406,7 @@ also send <code class="prettyprint">transaction_id</code> that caused this charg
 <p>Custom <code class="prettyprint">open_ticket</code> event example</p>
 </blockquote>
 <pre class="highlight json"><span class="w">    </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"apikey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxx"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"apikey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;apikey&gt;"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"user_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@gmail.com"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_ticket"</span><span class="p">,</span><span class="w">
@@ -402,7 +418,7 @@ also send <code class="prettyprint">transaction_id</code> that caused this charg
 <p>Custom <code class="prettyprint">close_ticket</code> event example</p>
 </blockquote>
 <pre class="highlight json"><span class="w">    </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"apikey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxx"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"apikey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;apikey&gt;"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"user_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@gmail.com"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"close_ticket"</span><span class="p">,</span><span class="w">
@@ -410,8 +426,39 @@ also send <code class="prettyprint">transaction_id</code> that caused this charg
         </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1371804841</span><span class="w">
      </span><span class="p">}</span><span class="w">
 </span></pre>
-<p>Custom events are used to tell the system of all kind of events, e.g. a subscription to a service, customer service contact, a newsletter supscription, and unsubscriptions and so on.</p>
+<p>Custom events are used to tell the system of all kind of events, e.g. a
+subscription to a service, customer service contact, a newsletter subsctription,
+an unsubsctription, and so on.</p>
 
+<h1 id="page-events-(javascript)">Page Events (JavaScript)</h1>
+
+<p>FraudRankr collects page events via JavaScript.</p>
+
+<blockquote>
+<p>Copy-and-paste the following JavaScript snippet onto your site just before <code class="prettyprint">&lt;/head&gt;</code>.</p>
+</blockquote>
+<pre class="highlight html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">FraudRankr</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">publishable_key</span><span class="p">:</span> <span class="s1">'&lt;apikey&gt;'</span>
+    <span class="p">};</span>
+    <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">function</span> <span class="nx">kickFraudRankr</span><span class="p">()</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="nb">document</span><span class="p">,</span> <span class="nx">f</span> <span class="o">=</span> <span class="nx">d</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'script'</span><span class="p">);</span>
+            <span class="nx">f</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s1">'text/javascript'</span><span class="p">;</span>
+            <span class="nx">f</span><span class="p">.</span><span class="nx">async</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="nx">f</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">protocol</span> <span class="o">==</span> <span class="s1">'https:'</span> <span class="p">?</span> <span class="s1">'https'</span> <span class="p">:</span> <span class="s1">'http'</span><span class="p">)</span> <span class="o">\</span>
+                    <span class="o">+</span> <span class="s1">'://c.fraudrankr.com/resources/t.js'</span><span class="p">;</span>
+            <span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="nx">d</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">'script'</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+            <span class="nx">s</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">f</span><span class="p">,</span> <span class="nx">s</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">a</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">attachEvent</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">a</span><span class="p">(</span><span class="s1">'onload'</span><span class="p">,</span> <span class="nx">kickFraudRankr</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'load'</span><span class="p">,</span> <span class="nx">kickFraudRankr</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">})();</span>
+<span class="nt">&lt;/script&gt;</span>
+</pre>
 <h1 id="chargeback-reason-codes">Chargeback Reason Codes</h1>
 
 <h2 id="visa">Visa</h2>
