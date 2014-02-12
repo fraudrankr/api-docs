@@ -32,10 +32,10 @@ You can view code examples in the dark area to the right, and you can switch the
 programming language of the examples with the tabs in the top right.
 
 
-# Sample Curl Command
+# Using cURL
 
 ```shell
-curl -X POST https://c.fraudrankr.com/labels -d '{"apikey": "xxxxxx", "user_id":
+curl -X POST https://c.fraudrankr.com/labels -d '{"apikey": "<apikey>", "user_id":
 "1234", "transaction_id": "ab1cd2-1234-5678", "label": "chargeback", "reason":
 "30"}'
 ```
@@ -44,13 +44,30 @@ curl -X POST https://c.fraudrankr.com/labels -d '{"apikey": "xxxxxx", "user_id":
 
 ```json
 {
-    "apikey": "xxxxxx",
+    "apikey": "<apikey>",
     "user_id": "1234",
     "transaction_id": "ab1cd2-1234-5678",
     "label": "chargeback",
     "reason": "30"
 }
 ```
+
+cURL is a command-line application for performing requests using a variety of
+protocols including HTTP. cURL is often used by developers to test FraudRankr
+API services, as it supports the HTTP functionality required to interact with
+the APIs at a low level.
+
+cURL is commonly available on a default install of many UNIX/Linux platforms.
+Try typing curl in your favorite shell to see if the tool is installed and is
+in your PATH. If you don't have the tool installed, visit the [download
+page](http://curl.haxx.se/download.html) on the [cURL
+website](http://curl.haxx.se/) to obtain the official source or a
+user-contributed binary package. Note that the command-line tool uses the
+libcurl library, which may be offered as a separate download package, so, if
+you're not compiling from the source, be sure to download a 'binary' package
+instead of a 'libcurl' package. The SSL-enabled packages are required to access
+the FraudRankr API.
+
 
 # Authentication
 FraudRankr uses API keys to allow access to the API. You can register for a
@@ -60,7 +77,7 @@ FraudRankr expects for the API key to be included in all JSON API requests to th
 
 ```json
 {
-    "apikey": "<api_key>",
+    "apikey": "<apikey>",
     "user_id": "1234",
     "transaction_id": "ab1cd2-1234-5678",
     "label": "chargeback",
@@ -68,7 +85,7 @@ FraudRankr expects for the API key to be included in all JSON API requests to th
 }
 ```
 <aside class="notice">
-You must replace `<api_key>` with your own API key.
+You must replace `<apikey>` with your own API key.
 </aside>
 
 # Common fields
@@ -94,7 +111,7 @@ users.
 
 ```json
     {
-        "apikey": "xxxxxx",
+        "apikey": "<apikey>",
         "user_id": "1234",
         "user_ip": "219.231.41.48",
         "transaction_id": "ab1cd2-1234-5678",
@@ -120,7 +137,7 @@ users.
 
 ```json
     {
-        "apikey": "xxxxxx",
+        "apikey": "<apikey>",
         "user_id": "1234",
         "transaction_id": "ab1cd2-1234-5678",
         "label": "refund",
@@ -170,7 +187,7 @@ users.
 
 ```json
     {
-        "apikey": "xxxxxx",
+        "apikey": "<apikey>",
         "user_id": "1234",
         "transaction_id": "ab1cd2-1234-5678",
         "label": "chargeback",
@@ -183,7 +200,7 @@ users.
 
 ```json
     {
-        "apikey": "xxxxxx",
+        "apikey": "<apikey>",
         "user_id": "1234",
         "transaction_id": "ab1cd2-1234-5678",
         "label": "retrieval-request",
@@ -220,7 +237,7 @@ There are a few reserved values for `label`:
 - `ban` - A user abused your system or abused other users and should be marked
 as bad.
 - `unban` - A user was mistakenly banned in your system. Avoid our system will
-treat good behavior as bad behavior.
+treat good behaviour as bad behaviour.
 - `chargeback` - A user made a transaction that caused a chargeback. Please
 also send ``transaction_id`` that caused this chargeback.
 - `retrieval-request` - A user caused a retrieval request.
@@ -231,7 +248,7 @@ also send ``transaction_id`` that caused this chargeback.
 
 ```json
     {
-        "apikey": "xxxxxx",
+        "apikey": "<apikey>",
         "user_id": "1234",
         "user_email": "john.doe@gmail.com",
         "type": "open_ticket",
@@ -243,7 +260,7 @@ also send ``transaction_id`` that caused this chargeback.
 
 ```json
     {
-        "apikey": "xxxxxx",
+        "apikey": "<apikey>",
         "user_id": "1234",
         "user_email": "john.doe@gmail.com",
         "type": "close_ticket",
@@ -252,7 +269,40 @@ also send ``transaction_id`` that caused this chargeback.
      }
 ```
 
-Custom events are used to tell the system of all kind of events, e.g. a subscription to a service, customer service contact, a newsletter supscription, and unsubscriptions and so on.
+Custom events are used to tell the system of all kind of events, e.g. a
+subscription to a service, customer service contact, a newsletter subsctription,
+an unsubsctription, and so on.
+
+
+# Page Events (JavaScript)
+
+FraudRankr collects page events via JavaScript.
+
+> Copy-and-paste the following JavaScript snippet onto your site just before `</head>`.
+
+```html
+<script type="text/javascript">
+    window.FraudRankr = {
+        publishable_key: '<apikey>'
+    };
+    (function() {
+        function kickFraudRankr() {
+            var d = document, f = d.createElement('script');
+            f.type = 'text/javascript';
+            f.async = true;
+            f.src = (d.location.protocol == 'https:' ? 'https' : 'http') \
+                    + '://c.fraudrankr.com/resources/t.js';
+            var s = d.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(f, s);
+        }
+        if (a = window.attachEvent) {
+            a('onload', kickFraudRankr);
+        } else {
+            window.addEventListener('load', kickFraudRankr, false);
+        }
+    })();
+</script>
+```
 
 
 # Chargeback Reason Codes
