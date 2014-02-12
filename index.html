@@ -8,7 +8,7 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 
     <!-- Use title if it's in the page YAML frontmatter -->
-    <title>API Reference</title>
+    <title>FraudRankr API Reference</title>
 
     <link href="stylesheets/screen.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
@@ -45,14 +45,6 @@
                 'shell',
               
             
-              
-                'ruby',
-              
-            
-              
-                'python',
-              
-            
           
         ]);
       });
@@ -61,15 +53,15 @@
 
   <body class="index">
     <div class="tocify-wrapper">
-      <img src="images/logo.png" />
+      <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+Cjxzdmcgd2lkdGg9IjE1MyIgaGVpZ2h0PSIzNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KIDwhLS0gQ3JlYXRlZCB3aXRoIE1ldGhvZCBEcmF3IC0gaHR0cDovL2dpdGh1Yi5jb20vZHVvcGl4ZWwvTWV0aG9kLURyYXcvIC0tPgoKIDxnPgogIDx0aXRsZT5iYWNrZ3JvdW5kPC90aXRsZT4KICA8cmVjdCB4PSItMSIgeT0iLTEiIHdpZHRoPSIxNTUiIGhlaWdodD0iMzgiIGlkPSJjYW52YXNfYmFja2dyb3VuZCIgZmlsbD0ibm9uZSIvPgogIDxnIGlkPSJjYW52YXNHcmlkIiBkaXNwbGF5PSJub25lIj4KICAgPHJlY3QgaWQ9InN2Z18yIiB3aWR0aD0iNTgwIiBoZWlnaHQ9IjQwMCIgeD0iMSIgeT0iMSIgc3Ryb2tlLXdpZHRoPSIwIiBmaWxsPSJ1cmwoI2dyaWRwYXR0ZXJuKSIvPgogIDwvZz4KIDwvZz4KIDxnPgogIDx0aXRsZT5MYXllciAxPC90aXRsZT4KICA8dGV4dCBzdHlsZT0iY3Vyc29yOiBtb3ZlOyIgZm9udC1zdHlsZT0ibm9ybWFsIiBmaWxsPSIjMDA4Y2JhIiBzdHJva2Utd2lkdGg9IjAiIHg9IjE5LjUiIHk9IjI4IiBpZD0ic3ZnXzEiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtZmFtaWx5PSJIZWx2ZXRpY2EsIEFyaWFsLCBzYW5zLXNlcmlmIiB0ZXh0LWFuY2hvcj0ibGVmdCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgc3Ryb2tlPSIjMDAwIiBmb250LXdlaWdodD0ibm9ybWFsIj5GciYjMjI2O3VkciYjMjI2O25rcjwvdGV4dD4KIDwvZz4KPC9zdmc+" />
       <div id="toc">
       </div>
       
       <ul class="toc-footer">
         
-          <li><a href='#'>Sign Up for a Developer Key</a></li>
+          <li><a href='http://www.fraudrankr.com/'>Request API Key</a></li>
         
-          <li><a href='http://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
+          <li><a href='https://github.com/fraudrankr/api-docs/edit/master/source/index.md'>Edit on Github</a></li>
         
       </ul>
       
@@ -78,154 +70,826 @@
       <div class="content">
         <h1 id="introduction">Introduction</h1>
 
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+<p>The Fraudrankr REST API supports 3 different resources (events).</p>
 
-<p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<p>A message sent to our API corresponds to an user event (transaction, label
+and custom event) on your service.</p>
 
-<p>This example API documentation page was created with <a href="http://github.com/tripit/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&rsquo;s documentation.</p>
+<p>Base URL: <code class="prettyprint">https://c.fraudrankr.com/</code></p>
 
+<blockquote>
+<p>API endpoints</p>
+</blockquote>
+<pre class="highlight shell">https://c.fraudrankr.com/transactions
+https://c.fraudrankr.com/labels
+https://c.fraudrankr.com/custom-events
+</pre>
+<p>All responses will be delivered in JSON format. HTTP response codes are used to
+indicate API errors.</p>
+
+<p>You can view code examples in the dark area to the right, and you can switch the
+programming language of the examples with the tabs in the top right.</p>
+
+<h1 id="sample-curl-command">Sample Curl Command</h1>
+<pre class="highlight shell">curl -X POST https://c.fraudrankr.com/labels -d <span class="s1">'{"apikey": "xxxxxx", "user_id":
+"1234", "transaction_id": "ab1cd2-1234-5678", "label": "chargeback", "reason":
+"30"}'</span>
+</pre>
+<blockquote>
+<p>The above command will send this JSON document (in HTTP request body):</p>
+</blockquote>
+<pre class="highlight json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"apikey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxx"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"transaction_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ab1cd2-1234-5678"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chargeback"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre>
 <h1 id="authentication">Authentication</h1>
 
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'kittn'</span>
+<p>FraudRankr uses API keys to allow access to the API. You can register for a
+FraudRankr API key at <a href="http://www.fraudrankr.com/">fraudrankr.com</a></p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</pre><pre class="highlight python"><span class="kn">import</span> <span class="s">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">Kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</pre><pre class="highlight shell"><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</pre>
-<blockquote>
-<p>Make sure to replace <code class="prettyprint">meowmeowmeow</code> with your API key.</p>
-</blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code class="prettyprint">Authorization: meowmeowmeow</code></p>
-
+<p>FraudRankr expects for the API key to be included in all JSON API requests to the server that looks like the following:</p>
+<pre class="highlight json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"apikey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;api_key&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"transaction_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ab1cd2-1234-5678"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chargeback"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre>
 <p><aside class="notice">
-You must replace <code class="prettyprint">meowmeowmeow</code> with your personal API key.
+You must replace <code class="prettyprint">&lt;api_key&gt;</code> with your own API key.
 </aside></p>
 
-<h1 id="kittens">Kittens</h1>
+<h1 id="common-fields">Common fields</h1>
 
-<h2 id="get-all-kittens">Get All Kittens</h2>
-<pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</pre><pre class="highlight python"><span class="kn">import</span> <span class="s">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">Kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</pre><pre class="highlight shell">curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Isis"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></pre>
-<p>This endpoint retrieves all kittens.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://example.com/kittens</code></p>
-
-<h3 id="query-parameters">Query Parameters</h3>
+<p>Common fields for all event types:</p>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Default</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td>apikey</td>
+<td>true</td>
+<td>The API key should be included in all API requests.</td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td>user_id</td>
+<td>no</td>
+<td>Unique ID for the user from your system.</td>
+</tr>
+<tr>
+<td>user_ip</td>
+<td>no</td>
+<td>IP address of the user.</td>
+</tr>
+<tr>
+<td>user_email</td>
+<td>no</td>
+<td>Mail address of the user.</td>
+</tr>
+<tr>
+<td>time</td>
+<td>no</td>
+<td>Time of the event since epoch (in seconds)) e.g. 1392211854.</td>
 </tr>
 </tbody></table>
 
-<p><aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+<p><aside class="notice">
+The <code class="prettyprint">user_mail</code>, <code class="prettyprint">user_ip</code>, and <code class="prettyprint">user_id</code> parameters are not required, but sending them helps us to better score the
+users.
 </aside></p>
 
-<h2 id="get-a-specific-kitten">Get a Specific Kitten</h2>
-<pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'kittn'</span>
+<h1 id="transaction-events">Transaction Events</h1>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</pre><pre class="highlight python"><span class="kn">import</span> <span class="s">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">Kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</pre><pre class="highlight shell">curl <span class="s2">"http://example.com/api/kittens/3"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>An example <code class="prettyprint">sale transaction</code> event</p>
 </blockquote>
-<pre class="highlight json"><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Isis"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
+<pre class="highlight json"><span class="w">    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"apikey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxx"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"219.231.41.48"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"transaction_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ab1cd2-1234-5678"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sale"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">25000</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"card"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"bin"</span><span class="p">:</span><span class="w"> </span><span class="mi">411111</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last4"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name_on_card"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"shipping_address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"address_1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50 Narrow Street"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"address_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Flat 20"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"zipcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SW1A 1AA"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"London"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GB"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span></pre>
-<p>This endpoint retrieves a specific kitten.</p>
-
-<p><aside class="warning">If you&rsquo;re not using an administrator API key, note that some kittens will return 403 Forbidden if they are hidden for admins only.</aside></p>
-
+<blockquote>
+<p>An example <code class="prettyprint">refund transaction</code> event</p>
+</blockquote>
+<pre class="highlight json"><span class="w">    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"apikey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxx"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"transaction_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ab1cd2-1234-5678"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"refund"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">25000</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"card"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"bin"</span><span class="p">:</span><span class="w"> </span><span class="mi">411111</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last4"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name_on_card"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span></pre>
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/kittens/&lt;ID&gt;</code></p>
+<p><code class="prettyprint">POST https://c.fraudrankr.com/transactions</code></p>
 
-<h3 id="url-parameters">URL Parameters</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the cat to retrieve</td>
+<td>transaction_id</td>
+<td>true</td>
+<td>ID of the transaction in your system.</td>
+</tr>
+<tr>
+<td>label</td>
+<td>true</td>
+<td>Indicates the type of transaction. Valid values: (sale, authorization, capture, refund, credit)</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>true</td>
+<td>The amount of the transaction (written in minor unit e.g. €20 EUR equals 2000 cents).</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>true</td>
+<td><a href="http://en.wikipedia.org/wiki/ISO_4217">ISO 4217 currency code</a> e.g. EUR.</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td>no</td>
+<td>Unique ID for the user from your system.</td>
+</tr>
+<tr>
+<td><strong>card</strong></td>
+<td>no</td>
+<td>Details on the card used to do the transaction.</td>
+</tr>
+<tr>
+<td>bin</td>
+<td>yes</td>
+<td>The first 6 digits of the card number (aka the BIN number) e.g. 429503.</td>
+</tr>
+<tr>
+<td>last4</td>
+<td>yes</td>
+<td>The last 4 digits of the card number e.g. 1234</td>
+</tr>
+<tr>
+<td>name_on_card</td>
+<td>yes</td>
+<td>The name of the card holder e.g. John Doe.</td>
+</tr>
+<tr>
+<td><strong>shipping_address</strong></td>
+<td>no</td>
+<td>Provided if any shipping takes place.</td>
+</tr>
+<tr>
+<td>address_1</td>
+<td>yes</td>
+<td>Address line 1 e.g. 50 Narrow Street.</td>
+</tr>
+<tr>
+<td>address_2</td>
+<td>no</td>
+<td>Address line 2 e.g. Flat 20.</td>
+</tr>
+<tr>
+<td>zipcode</td>
+<td>yes</td>
+<td>Zipcode e.g. SW1A 1AA.</td>
+</tr>
+<tr>
+<td>city</td>
+<td>yes</td>
+<td>City e.g. London</td>
+</tr>
+<tr>
+<td>country</td>
+<td>yes</td>
+<td><a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1_alpha-2</a> two-letter country code e.g. GB.</td>
+</tr>
+</tbody></table>
+
+<p><aside class="notice">
+The <code class="prettyprint">card</code> and <code class="prettyprint">shpping_address</code> parameters are not required, but sending them helps us to better score the
+users.
+</aside></p>
+
+<h1 id="label-events">Label Events</h1>
+
+<blockquote>
+<p>An example using the <code class="prettyprint">chargeback</code> label</p>
+</blockquote>
+<pre class="highlight json"><span class="w">    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"apikey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxx"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"transaction_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ab1cd2-1234-5678"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chargeback"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1371804841</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span></pre>
+<blockquote>
+<p>An example using the <code class="prettyprint">retrieval-request</code> label</p>
+</blockquote>
+<pre class="highlight json"><span class="w">    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"apikey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxx"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"transaction_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ab1cd2-1234-5678"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"retrieval-request"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1371804841</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span></pre>
+<p>Labels are used to mark users that our service should learn from. An
+example could be marking a user that sent a chargeback (i.e.
+<code class="prettyprint">&quot;label&quot;: &quot;chargeback&quot;</code>).</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://c.fraudrankr.com/labels</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>transaction_id</td>
+<td>true</td>
+<td>ID of the transaction in your system.</td>
+</tr>
+<tr>
+<td>label</td>
+<td>yes</td>
+<td>Label of the event e.g. chargeback. See restrictions bellow.</td>
+</tr>
+<tr>
+<td>reason</td>
+<td>no</td>
+<td>Card scheme reason code e.g. 30.</td>
+</tr>
+</tbody></table>
+
+<p><aside class="notice">
+Help us by using card scheme specific reasons code in <code class="prettyprint">reason</code>. See
+<a href="#chargeback-reason-codes">Chargeback Reason Codes</a> and <a href="#retrieval-request-reason-codes">Retrieval Request
+Reason Codes</a>.
+</aside></p>
+
+<p>There are a few reserved values for <code class="prettyprint">label</code>:</p>
+
+<ul>
+<li><code class="prettyprint">ban</code> - A user abused your system or abused other users and should be marked
+as bad.</li>
+<li><code class="prettyprint">unban</code> - A user was mistakenly banned in your system. Avoid our system will
+treat good behavior as bad behavior.</li>
+<li><code class="prettyprint">chargeback</code> - A user made a transaction that caused a chargeback. Please
+also send <code class="prettyprint">transaction_id</code> that caused this chargeback.</li>
+<li><code class="prettyprint">retrieval-request</code> - A user caused a retrieval request.</li>
+</ul>
+
+<h1 id="custom-events">Custom Events</h1>
+
+<blockquote>
+<p>Custom <code class="prettyprint">open_ticket</code> event example</p>
+</blockquote>
+<pre class="highlight json"><span class="w">    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"apikey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxx"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@gmail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_ticket"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hi Customer Service,\nWhy did you charge my account?"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1371804841</span><span class="w">
+     </span><span class="p">}</span><span class="w">
+</span></pre>
+<blockquote>
+<p>Custom <code class="prettyprint">close_ticket</code> event example</p>
+</blockquote>
+<pre class="highlight json"><span class="w">    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"apikey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxx"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@gmail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"close_ticket"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dear John,\nWe charged you €10 for your monthly subscription at service.com?"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1371804841</span><span class="w">
+     </span><span class="p">}</span><span class="w">
+</span></pre>
+<p>Custom events are used to tell the system of all kind of events, e.g. a subscription to a service, customer service contact, a newsletter supscription, and unsubscriptions and so on.</p>
+
+<h1 id="chargeback-reason-codes">Chargeback Reason Codes</h1>
+
+<h2 id="visa">Visa</h2>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Reason</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>30</td>
+<td>Services Not Provided or Merchandise Not Received</td>
+</tr>
+<tr>
+<td>41</td>
+<td>Cancelled Recurring Transaction</td>
+</tr>
+<tr>
+<td>53</td>
+<td>Not as Described or Defective Merchandise</td>
+</tr>
+<tr>
+<td>57</td>
+<td>Fraudulent Multiple Transactions</td>
+</tr>
+<tr>
+<td>60</td>
+<td>Requested Copy Illegible</td>
+</tr>
+<tr>
+<td>62</td>
+<td>Counterfeit Transaction</td>
+</tr>
+<tr>
+<td>71</td>
+<td>Declined Authorization</td>
+</tr>
+<tr>
+<td>72</td>
+<td>No Authorization Obtained</td>
+</tr>
+<tr>
+<td>73</td>
+<td>Expired Card</td>
+</tr>
+<tr>
+<td>74</td>
+<td>Late Presentment</td>
+</tr>
+<tr>
+<td>75</td>
+<td>Cardholder Does Not Recognize the Transaction</td>
+</tr>
+<tr>
+<td>76</td>
+<td>Incorrect Transaction Code</td>
+</tr>
+<tr>
+<td>77</td>
+<td>Non Matching Acct Number</td>
+</tr>
+<tr>
+<td>79</td>
+<td>Requested Transaction Information Not Received</td>
+</tr>
+<tr>
+<td>80</td>
+<td>Incorrect Transaction Amount or Acct Number</td>
+</tr>
+<tr>
+<td>81</td>
+<td>Fraudulent Transaction - Card Present</td>
+</tr>
+<tr>
+<td>82</td>
+<td>Duplicate Processing</td>
+</tr>
+<tr>
+<td>83</td>
+<td>Fraudulent Transaction - Card Not Present</td>
+</tr>
+<tr>
+<td>85</td>
+<td>Credit Not Processed</td>
+</tr>
+<tr>
+<td>86</td>
+<td>Paid by Other Means</td>
+</tr>
+</tbody></table>
+
+<h2 id="mastercard">MasterCard</h2>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Reason</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>01</td>
+<td>Requested Transaction Data Not Received</td>
+</tr>
+<tr>
+<td>02</td>
+<td>Requested item illegible</td>
+</tr>
+<tr>
+<td>07</td>
+<td>Warning Bulletin File</td>
+</tr>
+<tr>
+<td>08</td>
+<td>Requested/Required Authorization Not Obtained</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Account Number Not on File</td>
+</tr>
+<tr>
+<td>31</td>
+<td>Transaction Amount Differs</td>
+</tr>
+<tr>
+<td>34</td>
+<td>Duplicate Processing</td>
+</tr>
+<tr>
+<td>35</td>
+<td>Card Not Valid or Expired</td>
+</tr>
+<tr>
+<td>37</td>
+<td>Fraudulent Mail/Phone Order Transaction</td>
+</tr>
+<tr>
+<td>40</td>
+<td>Fraudulent Processing of Transactions</td>
+</tr>
+<tr>
+<td>41</td>
+<td>Canceled Recurring Transaction</td>
+</tr>
+<tr>
+<td>42</td>
+<td>Late Presentment</td>
+</tr>
+<tr>
+<td>47</td>
+<td>Exceeds Floor Limit, Not Authorized, and Fraud Transactions</td>
+</tr>
+<tr>
+<td>49</td>
+<td>Questionable Merchant Activity</td>
+</tr>
+<tr>
+<td>50</td>
+<td>Credit Posted as a Debit</td>
+</tr>
+<tr>
+<td>53</td>
+<td>Cardholder Dispute Defective/Not as Described</td>
+</tr>
+<tr>
+<td>54</td>
+<td>Cardholder Dispute-Not Elsewhere (U.S. only)</td>
+</tr>
+<tr>
+<td>55</td>
+<td>Non-receipt of Merchandise</td>
+</tr>
+<tr>
+<td>59</td>
+<td>Services Not Rendered</td>
+</tr>
+<tr>
+<td>60</td>
+<td>Credit Not Processed</td>
+</tr>
+<tr>
+<td>62</td>
+<td>Counterfeit Transaction Magnetic Stripe POS Fraud</td>
+</tr>
+<tr>
+<td>63</td>
+<td>Cardholder Does Not Recognize - Potential Fraud</td>
+</tr>
+</tbody></table>
+
+<h2 id="discover">Discover</h2>
+
+<p>Discover Network has both numeric and alpha-numeric dispute reason codes. Your
+documentation may include either value.</p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Code</th>
+<th>Reason</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>4750</td>
+<td>AL</td>
+<td>Airline Transaction Dispute</td>
+</tr>
+<tr>
+<td>4541</td>
+<td>AP</td>
+<td>Automatic Payment Dispute</td>
+</tr>
+<tr>
+<td>4586</td>
+<td>AW</td>
+<td>Altered Amount Dispute</td>
+</tr>
+<tr>
+<td>4751</td>
+<td>CA</td>
+<td>Cash Advance Dispute</td>
+</tr>
+<tr>
+<td>4550</td>
+<td>CD</td>
+<td>Credit Posted as Card Sale</td>
+</tr>
+<tr>
+<td>4594</td>
+<td>CR</td>
+<td>Cancelled Reservation</td>
+</tr>
+<tr>
+<td>4752</td>
+<td>DA</td>
+<td>Declined Authorization</td>
+</tr>
+<tr>
+<td>4534</td>
+<td>DP</td>
+<td>Duplicate Processing</td>
+</tr>
+<tr>
+<td>4535</td>
+<td>EX</td>
+<td>Expired Card</td>
+</tr>
+<tr>
+<td>4502</td>
+<td>IC</td>
+<td>Illegible Transaction Documentation</td>
+</tr>
+<tr>
+<td>4753</td>
+<td>IN</td>
+<td>Invalid Card Number</td>
+</tr>
+<tr>
+<td>4584</td>
+<td>IS</td>
+<td>Missing Signature</td>
+</tr>
+<tr>
+<td>4542</td>
+<td>LP</td>
+<td>Late Presentation</td>
+</tr>
+<tr>
+<td>4754</td>
+<td>NA</td>
+<td>No Authorization</td>
+</tr>
+<tr>
+<td>4554</td>
+<td>NC</td>
+<td>Not Classified</td>
+</tr>
+<tr>
+<td>4755</td>
+<td>RG</td>
+<td>Non-receipts of Goods or Services</td>
+</tr>
+<tr>
+<td>4553</td>
+<td>RM</td>
+<td>Quality of Goods or Services Dispute</td>
+</tr>
+<tr>
+<td>4555</td>
+<td>RN1</td>
+<td>Additional Credit Requested</td>
+</tr>
+<tr>
+<td>4555</td>
+<td>RN2</td>
+<td>Credit Not Received</td>
+</tr>
+<tr>
+<td>4756</td>
+<td>SV</td>
+<td>Stored Value Dispute</td>
+</tr>
+<tr>
+<td>4757</td>
+<td>TF</td>
+<td>Violation of Operating Regulations</td>
+</tr>
+<tr>
+<td>4540</td>
+<td>UA</td>
+<td>Fraud Dispute</td>
+</tr>
+</tbody></table>
+
+<h1 id="retrieval-request-reason-codes">Retrieval Request Reason Codes</h1>
+
+<h2 id="visa">Visa</h2>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Reason</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>28</td>
+<td>Cardholder Requests Copy Bearing Signature</td>
+</tr>
+<tr>
+<td>29</td>
+<td>Request for T&amp;E Documents</td>
+</tr>
+<tr>
+<td>30</td>
+<td>Cardholder Dispute - Cardholder Requests Draft</td>
+</tr>
+<tr>
+<td>33</td>
+<td>Legal Process or Fraud Analysis</td>
+</tr>
+<tr>
+<td>34</td>
+<td>Repeat Request for Copy</td>
+</tr>
+</tbody></table>
+
+<h2 id="mastercard">MasterCard</h2>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Reason</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>05</td>
+<td>Chargeback Support - Card Holder Does Not Agree with Amount Billed</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Cardholder Inquiry - Does Not Recognize Transaction (Merchant Name, City, State or Date)</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Cardholder Inquiry - Disagrees With Billing</td>
+</tr>
+<tr>
+<td>23</td>
+<td>Cardholder Inquiry - Needs for Personal Records</td>
+</tr>
+<tr>
+<td>24</td>
+<td>Cardholder Inquiry - No Reason Code</td>
+</tr>
+<tr>
+<td>41</td>
+<td>Legal/Fraud - Signature Verification</td>
+</tr>
+<tr>
+<td>42</td>
+<td>Potential Chargeback or Compliance Documentation</td>
+</tr>
+<tr>
+<td>43</td>
+<td>Legal/Fraud - Imprint Verification</td>
+</tr>
+</tbody></table>
+
+<h2 id="discover">Discover</h2>
+
+<p>Discover Network has both numeric and alpha-numeric dispute reason codes. Your
+documentation may include either value.</p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Code</th>
+<th>Reason</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>4750</td>
+<td>AL</td>
+<td>Airline Transaction Dispute</td>
+</tr>
+<tr>
+<td>4541</td>
+<td>AP</td>
+<td>Automatic Payment Dispute</td>
+</tr>
+<tr>
+<td>4586</td>
+<td>AW</td>
+<td>Altered Amount Dispute</td>
+</tr>
+<tr>
+<td>4751</td>
+<td>CA</td>
+<td>Cash Advance Dispute</td>
+</tr>
+<tr>
+<td>4550</td>
+<td>CD</td>
+<td>Credit Posted as Card Sale</td>
+</tr>
+<tr>
+<td>4594</td>
+<td>CR</td>
+<td>Cancelled Reservation</td>
+</tr>
+<tr>
+<td>4534</td>
+<td>DP</td>
+<td>Duplicate Processing</td>
+</tr>
+<tr>
+<td>4554</td>
+<td>NC</td>
+<td>Not Classified</td>
+</tr>
+<tr>
+<td>4755</td>
+<td>RG</td>
+<td>Non-receipts of Goods or Services</td>
+</tr>
+<tr>
+<td>4553</td>
+<td>RM</td>
+<td>Quality of Goods or Services Dispute</td>
+</tr>
+<tr>
+<td>4555</td>
+<td>RN1</td>
+<td>Additional Credit Requested</td>
+</tr>
+<tr>
+<td>4555</td>
+<td>RN2</td>
+<td>Credit Not Received</td>
+</tr>
+<tr>
+<td>4540</td>
+<td>UA10</td>
+<td>Swiped Card Transaction - Proof of Valid Card Sale</td>
+</tr>
+<tr>
+<td>4540</td>
+<td>UA20</td>
+<td>Keyed Card Transaction - Proof of Valid Card Sale</td>
+</tr>
+<tr>
+<td>4540</td>
+<td>UA30</td>
+<td>Card Not Present Transaction - Proof of Delivery</td>
 </tr>
 </tbody></table>
 
 <h1 id="errors">Errors</h1>
-
-<p>The Kittn API uses the following error codes:</p>
 
 <table><thead>
 <tr>
@@ -235,7 +899,7 @@ Remember — a happy kitten is an authenticated kitten!
 </thead><tbody>
 <tr>
 <td>400</td>
-<td>Bad Request &ndash; Your request sucks</td>
+<td>Bad Request &ndash; Something is wrong with your request</td>
 </tr>
 <tr>
 <td>401</td>
@@ -243,31 +907,19 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 <tr>
 <td>403</td>
-<td>Forbidden &ndash; The kitten requested is hidden for administrators only</td>
+<td>Forbidden</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found &ndash; The specified kitten could not be found</td>
+<td>Not Found</td>
 </tr>
 <tr>
 <td>405</td>
-<td>Method Not Allowed &ndash; You tried to access a kitten with an invalid method</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable &ndash; You requested a format that isn&rsquo;t json</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone &ndash; The kitten requested has been removed from our servers</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&rsquo;m a teapot</td>
+<td>Method Not Allowed</td>
 </tr>
 <tr>
 <td>429</td>
-<td>Too Many Requests &ndash; You&rsquo;re requesting too many kittens! Slown down!</td>
+<td>Too Many Requests &ndash; You&rsquo;re requesting too fast. Slown down.</td>
 </tr>
 <tr>
 <td>500</td>
@@ -286,14 +938,6 @@ Remember — a happy kitten is an authenticated kitten!
             
               
                 <a href="#" data-language-name="shell">shell</a>
-              
-            
-              
-                <a href="#" data-language-name="ruby">ruby</a>
-              
-            
-              
-                <a href="#" data-language-name="python">python</a>
               
             
           
