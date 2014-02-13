@@ -88,21 +88,24 @@ https://c.fraudrankr.com/custom-events
 indicate API errors.</p>
 
 <h1 id="testing-the-api">Testing the API</h1>
-<pre class="highlight shell">curl -X POST https://c.fraudrankr.com/labels -d <span class="s1">'{"apikey": "&lt;apikey&gt;", "user_id":
-"1234", "transaction_id": "ab1cd2-1234-5678", "label": "chargeback", "reason":
-"30"}'</span>
+<pre class="highlight shell"><span class="nb">echo</span> <span class="s1">'{
+    "apikey": "&lt;apikey&gt;",
+    "user_id": "1234",
+    "transaction_id": "ab1cd2-1234-5678",
+    "label": "chargeback",
+    "reason": "30"
+}'</span>
+curl -X POST -d - https://c.fraudrankr.com/labels
 </pre>
 <blockquote>
-<p>The above command will send this JSON document (in HTTP request body):</p>
+<p>The above command will send the JSON document (in HTTP request body):</p>
 </blockquote>
-<pre class="highlight json"><span class="p">{</span><span class="w">
-    </span><span class="s2">"apikey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;apikey&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"transaction_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ab1cd2-1234-5678"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chargeback"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></pre>
+<pre class="highlight http"><span class="nf">POST</span> <span class="nn">/labels</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">c.fraudrankr.com</span>
+
+{ "apikey": "&lt;apikey&gt;", "user_id": "1234", "transaction_id": "ab1cd2-1234-5678",
+"label": "chargeback", "reason": "30" }
+</pre>
 <p>Use your HTTP client of choice whether it is <code class="prettyprint">wget</code>, <code class="prettyprint">curl</code>,
 <a href="http://www.getpostman.com">Postman</a>, or
 <a href="https://addons.mozilla.org/en-US/firefox/addon/restclient">RESTClient</a>.
