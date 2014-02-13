@@ -72,7 +72,7 @@
 
 <p>The Fraudrankr REST API supports 3 different resources (events).</p>
 
-<p>A message sent to our API corresponds to an user event (transaction, label
+<p>A message sent to our API corresponds to a user event (transaction, label
 and custom event) on your service.</p>
 
 <p>Base URL: <code class="prettyprint">https://c.fraudrankr.com/</code></p>
@@ -87,10 +87,7 @@ https://c.fraudrankr.com/custom-events
 <p>All responses will be delivered in JSON format. HTTP response codes are used to
 indicate API errors.</p>
 
-<p>You can view code examples in the dark area to the right, and you can switch the
-programming language of the examples with the tabs in the top right.</p>
-
-<h1 id="using-curl">Using cURL</h1>
+<h1 id="testing-the-api">Testing the API</h1>
 <pre class="highlight shell">curl -X POST https://c.fraudrankr.com/labels -d <span class="s1">'{"apikey": "&lt;apikey&gt;", "user_id":
 "1234", "transaction_id": "ab1cd2-1234-5678", "label": "chargeback", "reason":
 "30"}'</span>
@@ -106,28 +103,17 @@ programming language of the examples with the tabs in the top right.</p>
     </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></pre>
-<p>cURL is a command-line application for performing requests using a variety of
-protocols including HTTP. cURL is often used by developers to test FraudRankr
-API services, as it supports the HTTP functionality required to interact with
-the APIs at a low level.</p>
-
-<p>cURL is commonly available on a default install of many UNIX/Linux platforms.
-Try typing curl in your favorite shell to see if the tool is installed and is
-in your PATH. If you don&rsquo;t have the tool installed, visit the <a href="http://curl.haxx.se/download.html">download
-page</a> on the <a href="http://curl.haxx.se/">cURL
-website</a> to obtain the official source or a
-user-contributed binary package. Note that the command-line tool uses the
-libcurl library, which may be offered as a separate download package, so, if
-you&rsquo;re not compiling from the source, be sure to download a &lsquo;binary&rsquo; package
-instead of a &lsquo;libcurl&rsquo; package. The SSL-enabled packages are required to access
-the FraudRankr API.</p>
+<p>Use your HTTP client of choice whether it is <code class="prettyprint">wget</code>, <code class="prettyprint">curl</code>,
+<a href="http://www.getpostman.com">Postman</a>, or
+<a href="https://addons.mozilla.org/en-US/firefox/addon/restclient">RESTClient</a>.
+We will use <code class="prettyprint">curl</code> for the examples so you can easily copy and paste to test.</p>
 
 <h1 id="authentication">Authentication</h1>
 
 <p>FraudRankr uses API keys to allow access to the API. You can register for a
 FraudRankr API key at <a href="http://www.fraudrankr.com/">fraudrankr.com</a></p>
 
-<p>FraudRankr expects for the API key to be included in all JSON API requests to the server that looks like the following:</p>
+<p>FraudRankr expects the API key to be included in all JSON API requests to the server that looks like the following:</p>
 <pre class="highlight json"><span class="p">{</span><span class="w">
     </span><span class="s2">"apikey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;apikey&gt;"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
@@ -438,25 +424,25 @@ an unsubsctription, and so on.</p>
 <p>Copy-and-paste the following JavaScript snippet onto your site just before <code class="prettyprint">&lt;/head&gt;</code>.</p>
 </blockquote>
 <pre class="highlight html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
-    <span class="nb">window</span><span class="p">.</span><span class="nx">FraudRankr</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="na">publishable_key</span><span class="p">:</span> <span class="s1">'&lt;apikey&gt;'</span>
-    <span class="p">};</span>
-    <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="kd">function</span> <span class="nx">kickFraudRankr</span><span class="p">()</span> <span class="p">{</span>
-            <span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="nb">document</span><span class="p">,</span> <span class="nx">f</span> <span class="o">=</span> <span class="nx">d</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'script'</span><span class="p">);</span>
-            <span class="nx">f</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s1">'text/javascript'</span><span class="p">;</span>
-            <span class="nx">f</span><span class="p">.</span><span class="nx">async</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-            <span class="nx">f</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">protocol</span> <span class="o">==</span> <span class="s1">'https:'</span> <span class="p">?</span> <span class="s1">'https'</span> <span class="p">:</span> <span class="s1">'http'</span><span class="p">)</span> <span class="o">\</span>
-                    <span class="o">+</span> <span class="s1">'://c.fraudrankr.com/resources/t.js'</span><span class="p">;</span>
-            <span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="nx">d</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">'script'</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
-            <span class="nx">s</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">f</span><span class="p">,</span> <span class="nx">s</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">a</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">attachEvent</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">a</span><span class="p">(</span><span class="s1">'onload'</span><span class="p">,</span> <span class="nx">kickFraudRankr</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'load'</span><span class="p">,</span> <span class="nx">kickFraudRankr</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">})();</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">FraudRankr</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">publishable_key</span><span class="p">:</span> <span class="s1">'&lt;apikey&gt;'</span>
+<span class="p">};</span>
+<span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">function</span> <span class="nx">kickFraudRankr</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="nb">document</span><span class="p">,</span> <span class="nx">f</span> <span class="o">=</span> <span class="nx">d</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'script'</span><span class="p">);</span>
+    <span class="nx">f</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s1">'text/javascript'</span><span class="p">;</span>
+    <span class="nx">f</span><span class="p">.</span><span class="nx">async</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="nx">f</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">protocol</span> <span class="o">==</span> <span class="s1">'https:'</span> <span class="p">?</span> <span class="s1">'https'</span> <span class="p">:</span> <span class="s1">'http'</span><span class="p">)</span> <span class="o">\</span>
+            <span class="o">+</span> <span class="s1">'://c.fraudrankr.com/resources/t.js'</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="nx">d</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">'script'</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="nx">s</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">f</span><span class="p">,</span> <span class="nx">s</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">a</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">attachEvent</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">a</span><span class="p">(</span><span class="s1">'onload'</span><span class="p">,</span> <span class="nx">kickFraudRankr</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'load'</span><span class="p">,</span> <span class="nx">kickFraudRankr</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">})();</span>
 <span class="nt">&lt;/script&gt;</span>
 </pre>
 <h1 id="chargeback-reason-codes">Chargeback Reason Codes</h1>
