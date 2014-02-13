@@ -32,22 +32,28 @@ indicate API errors.
 # Testing the API
 
 ```shell
-curl -X POST https://c.fraudrankr.com/labels -d '{"apikey": "<apikey>", "user_id":
-"1234", "transaction_id": "ab1cd2-1234-5678", "label": "chargeback", "reason":
-"30"}'
-```
-
->The above command will send this JSON document (in HTTP request body):
-
-```json
-{
+echo '{
     "apikey": "<apikey>",
     "user_id": "1234",
     "transaction_id": "ab1cd2-1234-5678",
     "label": "chargeback",
     "reason": "30"
-}
+}'
+curl -X POST -d - https://c.fraudrankr.com/labels
 ```
+
+>The above command will send the JSON document (in HTTP request body):
+
+```http
+POST /labels HTTP/1.1
+Host: c.fraudrankr.com
+
+{ "apikey": "<apikey>", "user_id": "1234", "transaction_id": "ab1cd2-1234-5678",
+"label": "chargeback", "reason": "30" }
+```
+
+
+
 
 Use your HTTP client of choice whether it is `wget`, `curl`,
 [Postman](http://www.getpostman.com), or
