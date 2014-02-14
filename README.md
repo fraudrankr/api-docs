@@ -5,7 +5,7 @@ Documentation at http://docs.fraudrankr.com/
 
 ## Found a bug?
 
-Just [submit a issue](https://github.com/fraudrankr/api-docs/issues) or [create a pull request](https://github.com/fraudrankr/api-docs/pulls) to this Github repo.
+Just [submit an issue](https://github.com/fraudrankr/api-docs/issues) or [create a pull request](https://github.com/fraudrankr/api-docs/pulls) to this GitHub repo.
 
 ## Credits
 
