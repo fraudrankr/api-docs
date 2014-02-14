@@ -86,7 +86,7 @@ Common fields for all event types:
 
 Parameter | Required | Description
 --------- | ------- | -----------
-apikey | true | The API key should be included in all API requests.
+apikey | yes | The API key should be included in all API requests.
 user_id | no | Unique ID for the user from your system.
 user_ip | no | IP address of the user.
 user_email | no | Mail address of the user.
@@ -151,10 +151,10 @@ users.
 
 Parameter | Required | Description
 --------- | ------- | -----------
-transaction_id | true | ID of the transaction in your system.
-label | true | Indicates the type of transaction. Valid values: (sale, authorization, capture, refund, credit)
-amount | true | The amount of the transaction (written in minor unit e.g. €20 EUR equals 2000 cents).
-currency | true | [ISO 4217 currency code](http://en.wikipedia.org/wiki/ISO_4217) e.g. EUR.
+transaction_id | yes | ID of the transaction in your system.
+label | yes | Indicates the type of transaction. Valid values: (sale, authorization, capture, refund, credit)
+amount | yes | The amount of the transaction (written in minor unit e.g. €20 EUR equals 2000 cents).
+currency | yes | [ISO 4217 currency code](http://en.wikipedia.org/wiki/ISO_4217) e.g. EUR.
 user_id | no | Unique ID for the user from your system.
 **card** | no | Details on the card used to do the transaction.
 bin | yes | The first 6 digits of the card number (aka the BIN number) e.g. 429503.
@@ -214,7 +214,7 @@ example could be marking a user that sent a chargeback (i.e.
 
 Parameter | Required | Description
 --------- | ------- | -----------
-transaction_id | true | ID of the transaction in your system.
+transaction_id | yes | ID of the transaction in your system.
 label | yes | Label of the event e.g. chargeback. See restrictions bellow.
 reason | no | Card scheme reason code e.g. 30.
 
