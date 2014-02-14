@@ -52,9 +52,6 @@ Host: c.fraudrankr.com
 "label": "chargeback", "reason": "30" }
 ```
 
-
-
-
 Use your HTTP client of choice whether it is `wget`, `curl`,
 [Postman](http://www.getpostman.com), or
 [RESTClient](https://addons.mozilla.org/en-US/firefox/addon/restclient).
@@ -65,7 +62,8 @@ We will use `curl` for the examples so you can easily copy and paste to test.
 FraudRankr uses API keys to allow access to the API. You can register for a
 FraudRankr API key at [fraudrankr.com](http://www.fraudrankr.com/)
 
-FraudRankr expects the API key to be included in all JSON API requests to the server that looks like the following:
+FraudRankr expects the API key to be included in all JSON API requests to the
+server that looks like the following:
 
 ```json
 {
@@ -93,8 +91,8 @@ user_email | no | Mail address of the user.
 time | no | Time of the event since epoch (in seconds)) e.g. 1392211854.
 
 <aside class="notice">
-The `user_mail`, `user_ip`, and `user_id` parameters are not required, but sending them helps us to better score the
-users.
+The `user_mail`, `user_ip`, and `user_id` parameters are not required, but
+sending them helps us to better score the users.
 </aside>
 
 # Transaction Events
@@ -168,8 +166,8 @@ city | yes | City e.g. London
 country | yes | [ISO 3166-1_alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) two-letter country code e.g. GB.
 
 <aside class="notice">
-The `card` and `shpping_address` parameters are not required, but sending them helps us to better score the
-users.
+The `card` and `shpping_address` parameters are not required, but sending them
+helps us to better score the users.
 </aside>
 
 
