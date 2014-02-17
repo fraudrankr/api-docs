@@ -164,9 +164,13 @@ You must replace <code class="prettyprint">&lt;apikey&gt;</code> with your own A
 <tr>
 <td>time</td>
 <td>no</td>
-<td>Time of the event since epoch (in seconds)) e.g. 1392211854.</td>
+<td>Time (UTC) of the event since epoch (in seconds) e.g. 1392211854.</td>
 </tr>
 </tbody></table>
+
+<p>&lt;<aside class="notice">
+The <code class="prettyprint">time</code> parameter is optional, but when provided it must to be in UTC.
+</aside></p>
 
 <p><aside class="notice">
 The <code class="prettyprint">user_mail</code>, <code class="prettyprint">user_ip</code>, and <code class="prettyprint">user_id</code> parameters are not required, but
