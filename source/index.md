@@ -88,7 +88,11 @@ apikey | yes | The API key should be included in all API requests.
 user_id | no | Unique ID for the user from your system.
 user_ip | no | IP address of the user.
 user_email | no | Mail address of the user.
-time | no | Time of the event since epoch (in seconds)) e.g. 1392211854.
+time | no | Time (UTC) of the event since epoch (in seconds) e.g. 1392211854.
+
+<<aside class="notice">
+The `time` parameter is optional, but when provided it must to be in UTC.
+</aside>
 
 <aside class="notice">
 The `user_mail`, `user_ip`, and `user_id` parameters are not required, but
