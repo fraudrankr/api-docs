@@ -90,7 +90,7 @@ user_ip | no | IP address of the user.
 user_email | no | Mail address of the user.
 time | no | Time (UTC) of the event since epoch (in seconds) e.g. 1392211854.
 
-<<aside class="notice">
+<aside class="notice">
 The `time` parameter is optional, but when provided it must to be in UTC.
 </aside>
 
