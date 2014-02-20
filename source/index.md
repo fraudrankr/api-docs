@@ -154,12 +154,12 @@ sending them helps us to better score the users.
 Parameter | Required | Description
 --------- | ------- | -----------
 transaction_id | yes | ID of the transaction in your system.
-label | yes | Indicates the type of transaction. Valid values: (sale, authorization, capture, refund, credit)
+label | yes | Indicates the type of transaction. Valid values: (sale, authorization, capture, refund, credit, recurring)
 amount | yes | The amount of the transaction (written in minor unit e.g. €20 EUR equals 2000 cents).
 currency | yes | [ISO 4217 currency code](http://en.wikipedia.org/wiki/ISO_4217) e.g. EUR.
 user_id | no | Unique ID for the user from your system.
 **card** | no | Details on the card used to do the transaction.
-bin | yes | The first 6 digits of the card number (aka the BIN number) e.g. 429503.
+bin | yes | The first 6 digits of the card number (aka the IIN number) e.g. 429503.
 last4 | yes | The last 4 digits of the card number e.g. 1234
 name_on_card | yes | The name of the card holder e.g. John Doe.
 **shipping_address** | no | Provided if any shipping takes place.
