@@ -300,8 +300,10 @@ window.FraudRankr = {
 ```
 
 <aside class="notice">
-You can use the ``user`` variable to set any value that can identify the user,
-e.g. a user mail address.
+You should set the ``user`` variable to a value that can identify the user,
+e.g. a user mail address or a user id from your systems. The ``user`` variable
+is not required on all page events, but should be present on at least one
+page event during a session.
 </aside>
 
 # Chargeback Reason Codes
