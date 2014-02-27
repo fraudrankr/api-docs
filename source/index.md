@@ -278,6 +278,7 @@ FraudRankr collects page events via JavaScript.
 <script type="text/javascript">
 window.FraudRankr = {
   publishable_key: '<apikey>'
+  user: '<user@example.com>'
 };
 (function() {
   function kickFraudRankr() {
@@ -298,6 +299,10 @@ window.FraudRankr = {
 </script>
 ```
 
+<aside class="notice">
+You can use the ``user`` variable to set any value that can identify the user,
+e.g. a user mail address.
+</aside>
 
 # Chargeback Reason Codes
 
