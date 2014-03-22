@@ -1,5 +1,5 @@
 ---
-title: FraudRankr API Reference
+title: Fraudrankr API Reference
 
 language_tabs:
   - shell
@@ -11,6 +11,17 @@ toc_footers:
 
 # Introduction
 
+> API endpoints
+
+```shell
+# transaction events (authorize, capture, sale etc.)
+https://c.fraudrankr.com/transactions
+# labels (chargeback, dispute etc.)
+https://c.fraudrankr.com/labels
+# custom events (customer service contact events etc.)
+https://c.fraudrankr.com/custom-events
+```
+
 The Fraudrankr REST API supports 3 different resources (events).
 
 A message sent to our API corresponds to a user event (transaction, label
@@ -18,15 +29,25 @@ and custom event) on your service.
 
 Base URL: `https://c.fraudrankr.com/`
 
-> API endpoints
-
-```shell
-https://c.fraudrankr.com/transactions
-https://c.fraudrankr.com/labels
-https://c.fraudrankr.com/custom-events
-```
 All responses will be delivered in JSON format. HTTP response codes are used to
 indicate API errors.
+
+
+# Quickstart
+
+To use Fraudrankr you'll need to send us only two things:
+
+* Your transaction details
+* And you'll need to tell us about your chargebacks
+
+This is all we need in order to identify and predict fraud and chargebacks.
+
+## Load historic data
+
+You are able to load historic data into Fraudrankr, this enables you to get
+fraud predictions from day one.
+
+You'll need to set the `time` parameter for all historic events (transactions, chargebacks etc.). The [Common fields](#common-fields) section outlines how to send event data to Fraudrankr.
 
 
 # Testing the API
@@ -47,9 +68,16 @@ curl -X POST -d - https://c.fraudrankr.com/labels
 ```http
 POST /labels HTTP/1.1
 Host: c.fraudrankr.com
+```
 
-{ "apikey": "<apikey>", "user_id": "1234", "transaction_id": "ab1cd2-1234-5678",
-"label": "chargeback", "reason": "30" }
+```json
+{ 
+  "apikey": "<apikey>", 
+  "user_id": "1234",
+  "transaction_id": "ab1cd2-1234-5678",
+  "label": "chargeback",
+  "reason": "30"
+}
 ```
 
 Use your HTTP client of choice whether it is `wget`, `curl`,
@@ -91,7 +119,8 @@ user_email | no | Mail address of the user.
 time | no | Time (UTC) of the event since epoch (in seconds) e.g. 1392211854.
 
 <aside class="notice">
-The `time` parameter is optional, but when provided it must to be in UTC.
+The `time` parameter is optional, but when provided it must to be in UTC. You
+must use the `time` parameter in order to load historic data into Fraudrankr.
 </aside>
 
 <aside class="notice">
