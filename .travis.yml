@@ -1,3 +1,18 @@
+language: ruby
 rvm:
-  - 1.9.3
-  - 2.0.0
+- 2.1.1
+before_install:
+# removes ruby version from Gemfile
+- sed -i '2d' Gemfile
+cache:
+- bundler
+install: bundle install
+script: bundle exec middleman build
+notifications:
+  hipchat:
+    rooms:
+      secure: O7Rr8cWxqEH5z75cmJavVrDtzLG5p8YvJnOkOXLxi38qfh/0gAwTycKkP5ttOGNBVog2kwq9Pr/V3MAmxtpkj5h9Z0DKAKUyWIqwNdd6ATzbNuVZQQTMcPlheowcN7dEDIaOTzniTdHl2J7q1CFlPE8M3ca7z0eqi9ZhrQHNPFM=
+    template:
+    - '%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}
+      (<a href="%{build_url}">Details</a>/<a href="%{compare_url}">Change view</a>)'
+    format: html
