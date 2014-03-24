@@ -156,18 +156,6 @@ sending them helps us to better score the users.
     }
 ```
 
-> Response to a ``sale transaction`` event with fraud score (boolean)
-
-```json
-    {
-        "status": "success",
-        "time":   "2014-03-20T14:18:48+00:00",
-        "risky":  true
-    }
-```
-
-
-
 > An example ``refund transaction`` event
 
 ```json
@@ -211,8 +199,34 @@ city | yes | City e.g. London
 country | yes | [ISO 3166-1_alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) two-letter country code e.g. GB.
 
 <aside class="notice">
-The `card` and `shpping_address` parameters are not required, but sending them
+The `card` and `shipping_address` parameters are not required, but sending them
 helps us to better score the users.
+</aside>
+
+### Response
+
+> Response to a ``sale transaction`` event with fraud score (boolean)
+
+```json
+    {
+        "status": "success",
+        "time":   "2014-03-20T14:18:48+00:00",
+        "risky":  true
+    }
+```
+
+Parameter | Description
+--------- | ----------
+status    | Success or not in our end
+time      | Timestamp of the transaction
+risky     | Risk score (boolean)
+
+<aside class="notice">
+We suggest you should use the ``risky`` parameter to decide whether or not to
+require a 3D-Secure check for the transaction. You can do it the following way:
+Send the transaction to Fraudrankr before you send it to your payment provider
+and when you get a ``"risky": true`` then send it to a 3D-Secure payment flow
+and if you get ``"risky": false`` then send it to a non-3D-Secure payment flow.
 </aside>
 
 
