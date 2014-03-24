@@ -231,15 +231,6 @@ sending them helps us to better score the users.
     </span><span class="p">}</span><span class="w">
 </span></pre>
 <blockquote>
-<p>Response to a <code class="prettyprint">sale transaction</code> event with fraud score (boolean)</p>
-</blockquote>
-<pre class="highlight json"><span class="w">    </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"time"</span><span class="p">:</span><span class="w">   </span><span class="s2">"2014-03-20T14:18:48+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"risky"</span><span class="p">:</span><span class="w">  </span><span class="kc">true</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span></pre>
-<blockquote>
 <p>An example <code class="prettyprint">refund transaction</code> event</p>
 </blockquote>
 <pre class="highlight json"><span class="w">    </span><span class="p">{</span><span class="w">
@@ -347,8 +338,47 @@ sending them helps us to better score the users.
 </tbody></table>
 
 <p><aside class="notice">
-The <code class="prettyprint">card</code> and <code class="prettyprint">shpping_address</code> parameters are not required, but sending them
+The <code class="prettyprint">card</code> and <code class="prettyprint">shipping_address</code> parameters are not required, but sending them
 helps us to better score the users.
+</aside></p>
+
+<h3 id="response">Response</h3>
+
+<blockquote>
+<p>Response to a <code class="prettyprint">sale transaction</code> event with fraud score (boolean)</p>
+</blockquote>
+<pre class="highlight json"><span class="w">    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"time"</span><span class="p">:</span><span class="w">   </span><span class="s2">"2014-03-20T14:18:48+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"risky"</span><span class="p">:</span><span class="w">  </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Success or not in our end</td>
+</tr>
+<tr>
+<td>time</td>
+<td>Timestamp of the transaction</td>
+</tr>
+<tr>
+<td>risky</td>
+<td>Risk score (boolean)</td>
+</tr>
+</tbody></table>
+
+<p><aside class="notice">
+We suggest you should use the <code class="prettyprint">risky</code> parameter to decide whether or not to
+require a 3D-Secure check for the transaction. You can do it the following way:
+Send the transaction to Fraudrankr before you send it to your payment provider
+and when you get a <code class="prettyprint">&quot;risky&quot;: true</code> then send it to a 3D-Secure payment flow
+and if you get <code class="prettyprint">&quot;risky&quot;: false</code> then send it to a non-3D-Secure payment flow.
 </aside></p>
 
 <h1 id="label-events">Label Events</h1>
