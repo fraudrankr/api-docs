@@ -156,6 +156,18 @@ sending them helps us to better score the users.
     }
 ```
 
+> Response to a ``sale transaction`` event with fraud score (boolean)
+
+```json
+    {
+        "status": "success",
+        "time":   "2014-03-20T14:18:48+00:00",
+        "risky":  true
+    }
+```
+
+
+
 > An example ``refund transaction`` event
 
 ```json
