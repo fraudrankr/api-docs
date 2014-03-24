@@ -37,8 +37,9 @@ indicate API errors.
 
 To use Fraudrankr you'll need to send us only two things:
 
-* Your transaction details
-* And you'll need to tell us about your chargebacks
+* Your transaction details [How to send transactions](#transaction-events)
+* And you'll need to tell us about your chargebacks [How to send label
+  events](#label-events)
 
 This is all we need in order to identify and predict fraud and chargebacks.
 
